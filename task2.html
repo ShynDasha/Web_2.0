@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик покупок</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contain">
+        <div class="shop-list">
+            <div class="add-item">
+                <input type="text" placeholder="Назва товару" id="new-item">
+                <button class="add-button" data-tooltip="Додати новий товар">Додати</button>
+            </div>
+            <section class="items">
+                <div class="item">
+                    <span class="item-name crossed-out">Помідори</span>
+                    <span class="item-quantity">2</span>
+                    <button class="status-button not-bought" data-tooltip="Позначити як куплено">Не куплено</button>
+                </div>
+                <div class="item">
+                    <span class="item-name">Печиво</span>
+                    <span class="item-quantity">
+                        <button class="quantity-button" data-tooltip="Зменшити кількість">-</button>
+                        2
+                        <button class="quantity-button" data-tooltip="Збільшити кількість">+</button>
+                    </span>
+                    <button class="status-button bought" data-tooltip="Позначити як куплено">Куплено</button>
+                    <button class="remove-button" data-tooltip="Видалити">✖</button>
+                </div>
+                <div class="item">
+                    <span class="item-name">Сир</span>
+                    <span class="item-quantity">
+                        <button class="quantity-button" data-tooltip="Зменшити кількість">-</button>
+                        1
+                        <button class="quantity-button" data-tooltip="Збільшити кількість">+</button>
+                    </span>
+                    <button class="status-button bought" data-tooltip="Позначити як куплено">Куплено</button>
+                    <button class="remove-button" data-tooltip="Видалити">✖</button>
+                </div>
+            </section>
+        </div>
+        <div class="summary">
+            <div class="remaining">
+                <h3>Залишилося</h3>
+                <section>
+                    <div>Печиво <span class="badge">2</span></div>
+                    <div>Сир <span class="badge">1</span></div>
+                </section>
+            </div>
+            <div class="bought">
+                <h3>Куплено</h3>
+                <section>
+                    <div>Помідори <span class="badge">2</span></div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="badge" id="main-badge" data-owner="Шин Дарія">
+        BuyList
+    </div>
+</body>
+</html>
