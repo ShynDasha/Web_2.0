@@ -1,0 +1,236 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contain {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.shop-list, .summary {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.add-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#new-item {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.add-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+
+.item {
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.item .item-details {
+    display: flex;
+    align-items: center;
+}
+
+.item .item-controls {
+    display: flex;
+    align-items: center;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.item-name.crossed-out {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.status-button, .quantity-button, .remove-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.status-button.not-bought {
+    background-color: #6c757d;
+}
+
+.status-button.bought {
+    background-color: #6c757d;
+    margin-left: 5px;
+}
+
+.remove-button {
+    background-color: #dc3545;
+}
+
+.status-button-section {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-button {
+    background-color: transparent;
+    color: #212529;
+    border: 1px solid transparent;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 50%;
+}
+
+.quantity-button[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    background-color: #dc3545;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1;
+}
+
+.quantity-button:first-child {
+    background-color: #dc3545;
+    color: white;
+}
+
+.quantity-button:last-child {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge {
+    background-color: #ff6600;
+    color: white;
+    border-radius: 10px;
+    padding: 3px 7px;
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+.summary {
+    display: flex;
+    flex-direction: column;
+}
+
+.remaining, .bought {
+    margin-bottom: 20px;
+}
+
+.remaining ul, .bought ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.remaining li, .bought li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+#main-badge {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    background-color: #800080;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+#main-badge:hover {
+    transform: translateY(-20px);
+    background-color: #4b0082;
+}
+
+#main-badge:hover::after {
+    content: attr(data-owner);
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.quantity-button[data-tooltip]:hover::after, .add-button[data-tooltip]:hover::after, .status-button[data-tooltip]:hover::after, .remove-button[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    background-color: #800080;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1;
+}
+
+.quantity-button[data-tooltip]::after, .add-button[data-tooltip]::after, .status-button[data-tooltip]::after, .remove-button[data-tooltip]::after {
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+}
+
+@media (max-width: 750px) {
+    .contain {
+        flex-direction: column;
+    }
+}
+
+@media print {
+    #main-badge {
+        background-color: white;
+        color: #800080;
+        border: 2px solid #800080;
+    }
+    #main-badge::before {
+        content: attr(data-owner);
+        color: #800080;
+    }
+    #main-badge::after {
+        content: "";
+    }
+}
