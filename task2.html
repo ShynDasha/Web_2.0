@@ -10,16 +10,20 @@
 <body>
     <div class="contain">
         <div class="shop-list">
+            <!-- Форма для додавання нового товару -->
             <div class="add-item">
                 <input type="text" placeholder="Назва товару" id="new-item">
                 <button class="add-button" data-tooltip="Додати новий товар">Додати</button>
             </div>
+             <!-- Секція з елементами списку покупок -->
             <section class="items">
+                 <!-- Пункт списку  -->
                 <div class="item">
                     <span class="item-name crossed-out">Помідори</span>
                     <span class="tomatoes-counter">2</span>
                     <button class="status-button not-bought" data-tooltip="Позначити як куплено">Не куплено</button>
                 </div>
+                 <!-- Пункт списку -->
                 <div class="item">
                     <span class="item-name">Печиво</span>
                     <span class="cookies-counter">
@@ -30,6 +34,7 @@
                     <button class="status-button bought" data-tooltip="Позначити як куплено">Куплено</button>
                     <button class="remove-button" data-tooltip="Видалити">✖</button>
                 </div>
+                 <!-- Пункт списку  -->
                 <div class="item">
                     <span class="item-name">Сир</span>
                     <span class="cheese-counter">
@@ -42,7 +47,9 @@
                 </div>
             </section>
         </div>
+         <!-- Секція зі статистикою покупок -->
         <div class="summary">
+             <!-- Розділ з залишками товарів -->
             <div class="remaining">
                 <h3>Залишилося</h3>
                 <section>
@@ -50,6 +57,7 @@
                     <div>Сир <span class="badge">1</span></div>
                 </section>
             </div>
+             <!-- Розділ з купленими товарами -->
             <div class="bought">
                 <h3>Куплено</h3>
                 <section>
@@ -59,6 +67,7 @@
             </div>
         </div>
     </div>
+     <!-- Бейдж -->
     <div class="badge" id="main-badge" data-owner="Шин Дарія">
         BuyList
     </div>
