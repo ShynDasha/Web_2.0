@@ -55,7 +55,15 @@ body {
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
-
+.cookies-counter{
+    margin-left:  25px;
+}
+.tomatoes-counter{
+    margin-left: 50px;
+}
+.cheese-counter{
+    margin-left: 48px;
+}
 .item .item-details {
     display: flex;
     align-items: center;
@@ -88,6 +96,7 @@ body {
 
 .status-button.not-bought {
     background-color: #6c757d;
+    margin-left: 65px;
 }
 
 .status-button.bought {
