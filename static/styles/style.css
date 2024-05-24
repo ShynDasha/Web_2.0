@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f8f9fa;
+    background-color: #e1e1e1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,6 +14,12 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+.line{
+    padding: 0px;
+    border: 1px solid #ddd;
 }
 /*  для списку покупок і статистики */
 .shop-list, .summary {
@@ -23,12 +29,18 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
     background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+.shop-list {
+    flex: 2;
+    position: relative;
 }
 /*  форми додавання нового товару */
 .add-item {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 /*  для поля вводу нового товару */
 #new-item {
@@ -36,35 +48,33 @@ body {
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 4px;
-    margin-right: 10px;
-    font-size: 1rem;
+    font-size: 15px;
 }
 /* для кнопки "Додати" */
 .add-button {
     background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
+    border-radius: 7px;
+    padding: 12px 24px;
+    font-size: 12px;
     cursor: pointer;
 }
 
 /*  для елементів списку товарів */
 .item {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
-.cookies-counter{
-    margin-left:  25px;
+.item-counter {
+    display: flex;
+    align-items: center;
 }
-.tomatoes-counter{
-    margin-left: 50px;
+.item-counter button {
+    margin: 0 5px;
 }
-.cheese-counter{
-    margin-left: 48px;
-}
-
 .item:last-child {
     border-bottom: none;
 }
@@ -74,37 +84,67 @@ body {
     text-decoration: line-through;
     color: #888;
 }
+
+.counter {
+    border-radius: 15%; 
+    width: 1.5em; 
+    height: 1.5em; 
+    background-color: #e1e1e1;
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: black; 
+}
+
 /*  для кнопок статусу товару, кількості та видалення */
-.status-button, .quantity-button, .remove-button {
+.status-button, .quantity-button {
     background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
+    border-radius: 7px;
     padding: 5px 10px;
     cursor: pointer;
     position: relative;
 }
-
+ .remove-button {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 7px;
+    padding: 5px 10px;
+    cursor: pointer;
+    position: relative;
+    width: 3.5em;
+    height: 3em;
+    margin-left: 5px;
+    margin-right: -10px;
+    
+}
 /* для кнопки статусу товару "Не куплено" */
 .status-button.not-bought {
-    background-color: #6c757d;
-    margin-left: 65px;
+    background-color: #e1e1e1;
+    width: 10em;
+    height: 3em;
+    margin-right: -8px;  
 }
 /* для кнопки статусу товару "куплено" */
 .status-button.bought {
-    background-color: #6c757d;
-    margin-left: 5px;
+    background-color: #e1e1e1;
+    width: 10em;
+    height: 3em;
 }
-
-/* Стилі для кнопки видалення товару */
-.remove-button {
-    background-color: #dc3545;
+.tomat{
+    margin-right: 30px;
+}
+.cookies{
+    margin-left: 25px;
+}
+.cheese{
+    margin-left: 50px;
 }
 
 .status-button-section {
     display: flex;
     align-items: center;
 }
+
 /*  для кнопок зміни кількості товару */
 .quantity-button {
     background-color: transparent;
@@ -113,21 +153,6 @@ body {
     padding: 5px 10px;
     margin: 0 5px;
     border-radius: 50%;
-}
-
-.quantity-button[data-tooltip]::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    background-color: #dc3545;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%) scale(1);
-    opacity: 1;
-    transition: opacity 0.3s, transform 0.3s;
-    z-index: 1;
 }
 
 /*для кнопок збільшення/зменшення кількості товару */
@@ -141,59 +166,10 @@ body {
     color: white;
 }
 
-.badge {
-    background-color: #ff6600;
-    color: white;
-    border-radius: 10px;
-    padding: 3px 7px;
-    font-size: 0.8em;
-    margin-left: 5px;
-}
 
 .summary {
     display: flex;
     flex-direction: column;
-}
-
-.remaining, .bought {
-    margin-bottom: 20px;
-}
-
-.remaining ul, .bought ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.remaining li, .bought li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0;
-}
-
-#main-badge {
-    position: fixed;
-    left: 10px;
-    bottom: 10px;
-    background-color: #800080;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px 10px 0 0;
-    cursor: pointer;
-    transition: transform 0.3s, background-color 0.3s;
-}
-
-#main-badge:hover {
-    transform: translateY(-20px);
-    background-color: #4b0082;
-}
-
-#main-badge:hover::after {
-    content: attr(data-owner);
-    display: block;
-    text-align: center;
-    margin-top: 10px;
 }
 
 .quantity-button[data-tooltip]:hover::after, .add-button[data-tooltip]:hover::after, .status-button[data-tooltip]:hover::after, .remove-button[data-tooltip]:hover::after {
@@ -203,8 +179,7 @@ body {
     color: white;
     padding: 5px;
     border-radius: 5px;
-    top: -30px;
-    left: 50%;
+    top: -45px;
     transform: translateX(-50%) scale(1);
     opacity: 1;
     transition: opacity 0.3s, transform 0.3s;
@@ -212,10 +187,10 @@ body {
 }
 
 .quantity-button[data-tooltip]::after, .add-button[data-tooltip]::after, .status-button[data-tooltip]::after, .remove-button[data-tooltip]::after {
+    transform: translateX(-50%) scale(0.5);
     opacity: 0;
-    transform: scale(0);
-    pointer-events: none;
 }
+
 
 @media (max-width: 750px) {
     .contain {
@@ -223,8 +198,104 @@ body {
     }
 }
 
+.title {
+    font-size: 16px;
+    padding-bottom: 1em;
+}
+
+.title {
+    font-size: 16px;
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 17px;
+ 
+}
+
+.boughtItems {
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 8em 1em; 
+ 
+}
+.boughtTitle{
+ padding-top: 20px;
+
+}
+.bough{
+    width: 10em;
+    height: 3em;
+    border-radius: 0.5em;
+    background-color: #e1e1e1;
+    border: none;
+   
+}
+.product {
+    border-top: 1px solid #ccc;
+    padding-top: 0.5em;
+    border-width: 100%;
+    display: flex ;
+    justify-content: space-between;
+    height: 3em;
+    max-width: 40rem;
+    flex:1;
+}
+.summary{
+    width: 300px;
+    height: 230px;
+    padding: 1em;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+.circle {
+    border-radius: 50%; 
+    width: 1.5em; 
+    height: 1.5em; 
+    background-color: orange;
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: white; 
+}
+.tomatoes{
+    text-decoration: line-through;
+}
+#main-badge {
+    position: fixed;
+    left: 25px;
+    bottom: -25px;
+    background-color: #800080;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+#main-badge:hover {
+    transform: translateY(-25px);
+    background-color: #4b0082;
+}
+
+#main-badge:hover::after {
+    content: attr(data-owner);
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+
 @media print {
+    .contain {
+        position: relative;
+    }
     #main-badge {
+        position: absolute;
         background-color: white;
         color: #800080;
         border: 2px solid #800080;
@@ -237,6 +308,6 @@ body {
         content: "";
     }
     #title {
-        display: none; /* Приховування заголовка "Buy List" */
+        display: none; 
     }
 }

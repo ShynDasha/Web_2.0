@@ -20,57 +20,65 @@
                  <!-- Пункт списку  -->
                 <div class="item">
                     <span class="item-name crossed-out">Помідори</span>
-                    <span class="tomatoes-counter">2</span>
-                    <button class="status-button not-bought" data-tooltip="Позначити як куплено">Не куплено</button>
+                    <span class="counter tomat">2</span>
+                    <div class="status-button-section">
+                        <button class="status-button not-bought" data-tooltip="Позначити як куплено">Не куплено</button>
+                    </div>
                 </div>
                  <!-- Пункт списку -->
                 <div class="item">
                     <span class="item-name">Печиво</span>
-                    <span class="cookies-counter">
+                    <div class="quantity-section cookies">
                         <button class="quantity-button" data-tooltip="Зменшити кількість">-</button>
-                        2
+                        <span  class="counter">2</span>
                         <button class="quantity-button" data-tooltip="Збільшити кількість">+</button>
-                    </span>
-                    <button class="status-button bought" data-tooltip="Позначити як куплено">Куплено</button>
-                    <button class="remove-button" data-tooltip="Видалити">✖</button>
+                    </div>
+                    <div class="status-button-section">
+                        <button class="status-button bought" data-tooltip="Позначити як куплено">Куплено</button>
+                        <button class="remove-button" data-tooltip="Видалити">✖</button>
+                    </div>
                 </div>
                  <!-- Пункт списку  -->
                 <div class="item">
                     <span class="item-name">Сир</span>
-                    <span class="cheese-counter">
+                    <div class="quantity-section cheese">
                         <button class="quantity-button" data-tooltip="Зменшити кількість">-</button>
-                        1
+                        <span  class="counter">1</span>
                         <button class="quantity-button" data-tooltip="Збільшити кількість">+</button>
-                    </span>
-                    <button class="status-button bought" data-tooltip="Позначити як куплено">Куплено</button>
-                    <button class="remove-button" data-tooltip="Видалити">✖</button>
+                    </div>
+                    <div class="status-button-section">
+                        <button class="status-button bought" data-tooltip="Позначити як куплено">Куплено</button>
+                        <button class="remove-button" data-tooltip="Видалити">✖</button>
+                    </div>
                 </div>
             </section>
         </div>
+    
          <!-- Секція зі статистикою покупок -->
         <div class="summary">
              <!-- Розділ з залишками товарів -->
-            <div class="remaining">
-                <h3>Залишилося</h3>
-                <section>
-                    <div>Печиво <span class="badge">2</span></div>
-                    <div>Сир <span class="badge">1</span></div>
-                </section>
-            </div>
-             <!-- Розділ з купленими товарами -->
-            <div class="bought">
-                <h3>Куплено</h3>
-                <section>
-                    <span class="item-name crossed-out">Помідори</span>
-                     <span class="badge">2</span>
-                </section>
-            </div>
+             <div class="title">
+                <label><strong>Залишилося</strong></label>
+             </div> 
+             <div class="product"> 
+                <div class="boughtItems">
+                <button class="bough">Печиво <span class="circle">2</span></button>
+                <button class="bough">Сир <span class="circle">1</span></button>
+                </div>
+            </div>  
+    
+            <div class="title">
+                <label class="boughtTitle"><strong>Куплено</strong></label>
+            </div> 
+            <div class="product tomatoes"> 
+                <button class="bough">Помідори<span class="circle tomatoes">2</span></button>
+            </div>  
         </div>
     </div>
      <!-- Бейдж -->
-    <div class="badge" id="main-badge" data-owner="Шин Дарія">
+    <div class="badg" id="main-badge" data-owner="Шин Дарія">
         <span>
-            <h4 id="title"> Buy List</h4>
+            <h4 id="title">Buy List</h4>
         </span>
     </div>
 </body>
