@@ -17,20 +17,15 @@ body {
     width: 100%;
     max-width: 1200px;
 }
-.line{
-    padding: 0px;
-    border: 1px solid #ddd;
-}
+
 /*  для списку покупок і статистики */
 .shop-list, .summary {
     flex: 1;
     margin: 10px;
     padding: 20px;
-    border: 1px solid #ddd;
     border-radius: 4px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 .shop-list {
     flex: 2;
@@ -46,7 +41,7 @@ body {
 #new-item {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ced4da;
+    border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 15px;
 }
@@ -66,7 +61,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 .item-counter {
     display: flex;
