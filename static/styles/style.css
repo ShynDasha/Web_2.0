@@ -37,23 +37,27 @@ body {
     align-items: center;
     margin-bottom: 10px;
 }
-/*  для поля вводу нового товару */
 #new-item {
     flex: 1;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 15px;
+    border-radius: 4px 0 0 4px; /* заокруглення тільки зліва */
+    font-size: 17px;
 }
-/* для кнопки "Додати" */
+
 .add-button {
     background-color: #007bff;
     color: white;
-    border-radius: 7px;
-    padding: 12px 24px;
+    border-radius: 0 7px 7px 0; /* заокруглення тільки справа */
+    padding: 12px 40px;
     font-size: 12px;
     cursor: pointer;
+    border: none;
+    box-shadow: none;
+    transition: none;
+    border-bottom: 4px solid #0566ce;
 }
+
 
 /*  для елементів списку товарів */
 .item {
@@ -84,11 +88,13 @@ body {
     border-radius: 15%; 
     width: 1.5em; 
     height: 1.5em; 
+    font-size: 18px;
     background-color: #e1e1e1;
+    
     display: inline-flex; 
     justify-content: center; 
     align-items: center; 
-    color: black; 
+    color: rgb(71, 71, 71); 
 }
 
 /*  для кнопок статусу товару, кількості та видалення */
@@ -110,21 +116,40 @@ body {
     height: 3em;
     margin-left: 5px;
     margin-right: -10px;
-    
+    border: none;
+    box-shadow: none;
+    transition: none;
+    border-bottom: 4px solid #b52d3a;
 }
 /* для кнопки статусу товару "Не куплено" */
 .status-button.not-bought {
     background-color: #e1e1e1;
+    color: rgb(71, 71, 71);
     width: 10em;
     height: 3em;
     margin-right: -8px;  
+    border: none;
+    box-shadow: none;
+    transition: none;
+    border-bottom: 4px solid #9a9a9a;
+    
 }
 /* для кнопки статусу товару "куплено" */
 .status-button.bought {
     background-color: #e1e1e1;
+    color: rgb(71, 71, 71);
     width: 10em;
     height: 3em;
+    border: none;
+    box-shadow: none;
+    transition: none;
+    border-bottom: 4px solid #9a9a9a;
 }
+.remove-button:active, .status-button.bought:active,.status-button.not-bought:active,
+.add-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0); 
+} 
 .tomat{
     margin-right: 30px;
 }
@@ -145,20 +170,27 @@ body {
     background-color: transparent;
     color: #212529;
     border: 1px solid transparent;
-    padding: 5px 10px;
+    padding: 10px 15px;
     margin: 0 5px;
     border-radius: 50%;
 }
 
 /*для кнопок збільшення/зменшення кількості товару */
-.quantity-button:first-child {
+.quantity-button.minus {
     background-color: #dc3545;
     color: white;
+    border-bottom: 4px solid #b52d3a;
 }
 
-.quantity-button:last-child {
+.quantity-button.plus {
     background-color: #28a745;
     color: white;
+    border-bottom: 4px solid #1f7434;   ;
+}
+
+.quantity-button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0); 
 }
 
 
@@ -227,6 +259,7 @@ body {
     border-radius: 0.5em;
     background-color: #e1e1e1;
     border: none;
+    color: rgb(71, 71, 71); 
    
 }
 .product {

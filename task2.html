@@ -13,7 +13,7 @@
             <!-- Форма для додавання нового товару -->
             <div class="add-item">
                 <input type="text" placeholder="Назва товару" id="new-item">
-                <button class="add-button" data-tooltip="Додати новий товар">Додати</button>
+                <button class="add-button" data-tooltip="Додати новий товар"><strong>Додати</strong></button>
             </div>
              <!-- Секція з елементами списку покупок -->
             <section class="items">
@@ -22,19 +22,19 @@
                     <span class="item-name crossed-out">Помідори</span>
                     <span class="counter tomat">2</span>
                     <div class="status-button-section">
-                        <button class="status-button not-bought" data-tooltip="Позначити як куплено">Не куплено</button>
+                        <button class="status-button not-bought" data-tooltip="Позначити як куплено"><strong>Не куплено</strong></button>
                     </div>
                 </div>
                  <!-- Пункт списку -->
                 <div class="item">
                     <span class="item-name">Печиво</span>
                     <div class="quantity-section cookies">
-                        <button class="quantity-button" data-tooltip="Зменшити кількість">-</button>
+                        <button class="quantity-button minus" data-tooltip="Зменшити кількість">-</button>
                         <span  class="counter">2</span>
-                        <button class="quantity-button" data-tooltip="Збільшити кількість">+</button>
+                        <button class="quantity-button plus" data-tooltip="Збільшити кількість">+</button>
                     </div>
                     <div class="status-button-section">
-                        <button class="status-button bought" data-tooltip="Позначити як куплено">Куплено</button>
+                        <button class="status-button bought" data-tooltip="Позначити як куплено"><strong>Куплено</strong></button>
                         <button class="remove-button" data-tooltip="Видалити">✖</button>
                     </div>
                 </div>
@@ -42,12 +42,12 @@
                 <div class="item">
                     <span class="item-name">Сир</span>
                     <div class="quantity-section cheese">
-                        <button class="quantity-button" data-tooltip="Зменшити кількість">-</button>
+                        <button class="quantity-button minus" data-tooltip="Зменшити кількість">-</button>
                         <span  class="counter">1</span>
-                        <button class="quantity-button" data-tooltip="Збільшити кількість">+</button>
+                        <button class="quantity-button plus" data-tooltip="Збільшити кількість">+</button>
                     </div>
                     <div class="status-button-section">
-                        <button class="status-button bought" data-tooltip="Позначити як куплено">Куплено</button>
+                        <button class="status-button bought" data-tooltip="Позначити як куплено"><strong>Куплено</strong></button>
                         <button class="remove-button" data-tooltip="Видалити">✖</button>
                     </div>
                 </div>
@@ -62,8 +62,8 @@
              </div> 
              <div class="product"> 
                 <div class="boughtItems">
-                <button class="bough">Печиво <span class="circle">2</span></button>
-                <button class="bough">Сир <span class="circle">1</span></button>
+                <button class="bough"><strong>Печиво</strong><span class="circle">2</span></button>
+                <button class="bough"><strong>Сир</strong><span class="circle">1</span></button>
                 </div>
             </div>  
     
@@ -71,7 +71,7 @@
                 <label class="boughtTitle"><strong>Куплено</strong></label>
             </div> 
             <div class="product tomatoes"> 
-                <button class="bough">Помідори<span class="circle tomatoes">2</span></button>
+                <button class="bough"><strong>Помідори</strong><span class="circle tomatoes">2</span></button>
             </div>  
         </div>
     </div>
