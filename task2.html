@@ -10,77 +10,30 @@
 <body>
     <div class="contain">
         <div class="shop-list">
-            <!-- Форма для додавання нового товару -->
             <div class="add-item">
                 <input type="text" placeholder="Назва товару" id="new-item">
-                <button class="add-button" data-tooltip="Додати новий товар"><strong>Додати</strong></button>
+                <button class="add-button" data-tooltip="Додати новий товар" onclick="addItem()"><strong>Додати</strong></button>
             </div>
-             <!-- Секція з елементами списку покупок -->
-            <section class="items">
-                 <!-- Пункт списку  -->
-                <div class="item">
-                    <span class="item-name crossed-out">Помідори</span>
-                    <span class="counter tomat">2</span>
-                    <div class="status-button-section">
-                        <button class="status-button not-bought" data-tooltip="Позначити як куплено"><strong>Не куплено</strong></button>
-                    </div>
-                </div>
-                 <!-- Пункт списку -->
-                <div class="item">
-                    <span class="item-name">Печиво</span>
-                    <div class="quantity-section cookies">
-                        <button class="quantity-button minus" data-tooltip="Зменшити кількість">-</button>
-                        <span  class="counter">2</span>
-                        <button class="quantity-button plus" data-tooltip="Збільшити кількість">+</button>
-                    </div>
-                    <div class="status-button-section">
-                        <button class="status-button bought" data-tooltip="Позначити як куплено"><strong>Куплено</strong></button>
-                        <button class="remove-button" data-tooltip="Видалити">✖</button>
-                    </div>
-                </div>
-                 <!-- Пункт списку  -->
-                <div class="item">
-                    <span class="item-name">Сир</span>
-                    <div class="quantity-section cheese">
-                        <button class="quantity-button minus" data-tooltip="Зменшити кількість">-</button>
-                        <span  class="counter">1</span>
-                        <button class="quantity-button plus" data-tooltip="Збільшити кількість">+</button>
-                    </div>
-                    <div class="status-button-section">
-                        <button class="status-button bought" data-tooltip="Позначити як куплено"><strong>Куплено</strong></button>
-                        <button class="remove-button" data-tooltip="Видалити">✖</button>
-                    </div>
-                </div>
+            <section class="items" id="item-list">
+                <!-- Тут будуть елементи списку товарів -->
             </section>
         </div>
-    
-         <!-- Секція зі статистикою покупок -->
         <div class="summary">
-             <!-- Розділ з залишками товарів -->
-             <div class="title">
-                <label><strong>Залишилося</strong></label>
-             </div> 
-             <div class="product"> 
-                <div class="boughtItems">
-                <button class="bough"><strong>Печиво</strong><span class="circle">2</span></button>
-                <button class="bough"><strong>Сир</strong><span class="circle">1</span></button>
-                </div>
-            </div>  
-    
-            <div class="title">
-                <label class="boughtTitle"><strong>Куплено</strong></label>
-            </div> 
-            <div class="product tomatoes"> 
-                <button class="bough"><strong>Помідори</strong><span class="circle tomatoes">2</span></button>
-            </div>  
+            <div class="title"><strong>Залишилося</strong></div>
+            <div class="product" id="remaining-items">
+                <!-- Тут будуть товари, які ще необхідно купити -->
+            </div>
+            <div class="title boughtTitle"><strong>Куплено</strong></div>
+            <div class="product" id="bought-items">
+                <!-- Тут будуть товари, які вже куплені -->
+            </div>
         </div>
     </div>
-     <!-- Бейдж -->
     <div class="badg" id="main-badge" data-owner="Шин Дарія">
         <span>
             <h4 id="title">Buy List</h4>
         </span>
     </div>
+    <script src="js/code.js"></script>
 </body>
-<script src="js/code.js"></script>
 </html>
