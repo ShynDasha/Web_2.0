@@ -1,9 +1,7 @@
-// Файл 'js/code.js'
-
 document.addEventListener("DOMContentLoaded", () => {
     // Додавання початкових товарів
     const initialItems = [
-        { name: 'Помідори', quantity: 2, bought: true },
+        { name: 'Помідори', quantity: 2, bought: false },
         { name: 'Печиво', quantity: 2, bought: false },
         { name: 'Сир', quantity: 1, bought: false }
     ];
@@ -152,3 +150,4 @@ function updateStatistics() {
         }
     });
 }
+
