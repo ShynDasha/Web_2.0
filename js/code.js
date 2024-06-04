@@ -59,21 +59,24 @@ function addItemToDOM(name, quantity, bought) {
     const statusButton = document.createElement("button");
     statusButton.className = `status-button ${bought ? 'not-bought' : 'bought'}`;
     statusButton.textContent = bought ? "Не куплено" : "Куплено";
-    statusButton.onclick = () => toggleBoughtStatus(itemNameSpan);
+    statusButton.onclick = () => toggleBought(itemDiv);
 
     statusButtonSection.appendChild(statusButton);
 
-    if (!bought) {
-        const removeButton = document.createElement("button");
-        removeButton.className = "remove-button";
-        removeButton.textContent = "✖";
-        removeButton.onclick = () => removeItem(itemDiv);
-
-        statusButtonSection.appendChild(removeButton);
+    const removeButton = document.createElement("button");
+    removeButton.className = "remove-button";
+    removeButton.textContent = "✖";
+    removeButton.onclick = () => removeItem(itemDiv);
+    if (bought) {
+        removeButton.style.display = 'none';
+        minusButton.style.display = 'none';
+        plusButton.style.display = 'none';
     }
 
+    statusButtonSection.appendChild(removeButton);
+
     itemDiv.appendChild(itemNameSpan);
-    if (!bought) itemDiv.appendChild(quantitySection);
+    itemDiv.appendChild(quantitySection);
     itemDiv.appendChild(statusButtonSection);
 
     itemList.appendChild(itemDiv);
@@ -104,23 +107,30 @@ function changeQuantity(itemNameSpan, delta) {
     updateStatistics();
 }
 
-function toggleBoughtStatus(itemNameSpan) {
-    const itemDiv = itemNameSpan.parentNode;
-    const isBought = itemNameSpan.classList.toggle("crossed-out");
-    const statusButton = itemNameSpan.nextSibling.querySelector(".status-button");
+function toggleBought(itemDiv) {
+    const itemNameSpan = itemDiv.querySelector('.item-name');
+    const boughtButton = itemDiv.querySelector('.status-button');
+    const deleteButton = itemDiv.querySelector('.remove-button');
+    const minusButton = itemDiv.querySelector('.quantity-button.minus');
+    const plusButton = itemDiv.querySelector('.quantity-button.plus');
 
-    statusButton.textContent = isBought ? "Не куплено" : "Куплено";
-    if (isBought) {
-        statusButton.className = "status-button not-bought";
-        itemDiv.querySelector(".quantity-section").remove();
-        itemDiv.querySelector(".remove-button").remove();
+    itemNameSpan.classList.toggle('crossed-out');
+    if (itemNameSpan.classList.contains('crossed-out')) {
+        boughtButton.textContent = 'Не куплено';
+        boughtButton.className = 'status-button not-bought';
+        deleteButton.style.display = 'none';
+        minusButton.style.visibility = 'hidden';
+        plusButton.style.visibility = 'hidden';
     } else {
-        statusButton.className = "status-button bought";
-        addItemToDOM(itemNameSpan.textContent, 1, false);
-        itemDiv.remove();
+        boughtButton.textContent = 'Куплено';
+        boughtButton.className = 'status-button bought';
+        deleteButton.style.display = 'inline-block';
+        minusButton.style.visibility = 'visible';
+        plusButton.style.visibility = 'visible';
     }
     updateStatistics();
 }
+
 
 function removeItem(itemDiv) {
     itemDiv.remove();
@@ -150,4 +160,3 @@ function updateStatistics() {
         }
     });
 }
-
