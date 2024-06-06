@@ -29,7 +29,10 @@ function addItemToDOM(name, quantity, bought) {
     const itemNameSpan = document.createElement("span");
     itemNameSpan.className = `item-name ${bought ? 'crossed-out' : ''}`;
     itemNameSpan.textContent = name;
-    itemNameSpan.onclick = () => editItemName(itemNameSpan);
+    
+    if (!bought) {
+        itemNameSpan.addEventListener('click', editItemNameHandler);
+    }
 
     const quantitySection = document.createElement("div");
     quantitySection.className = "quantity-section";
@@ -82,25 +85,38 @@ function addItemToDOM(name, quantity, bought) {
 }
 
 function editItemName(itemNameSpan) {
-    const originalName = itemNameSpan.textContent;
-    const input = document.createElement("input");
-    input.type = "text";
-    input.value = originalName;
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = itemNameSpan.textContent;
+    input.className = 'edit-item-name-input';
+    itemNameSpan.replaceWith(input);
+    input.focus();
 
-    input.addEventListener("blur", () => {
-        itemNameSpan.textContent = input.value.trim() || originalName;
-        itemNameSpan.parentNode.replaceChild(itemNameSpan, input);
+    input.addEventListener('blur', () => {
+        const newName = input.value.trim();
+        if (newName === '') {
+            alert('Назва не може бути порожньою');
+            input.focus();
+            return;
+        }
+
+        itemNameSpan.textContent = newName;
+        input.replaceWith(itemNameSpan);
+        if (!itemNameSpan.classList.contains('crossed-out')) {
+            itemNameSpan.addEventListener('click', editItemNameHandler);
+        }
         updateStatistics();
     });
 
-    input.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
             input.blur();
         }
     });
+}
 
-    itemNameSpan.parentNode.replaceChild(input, itemNameSpan);
-    input.focus();
+function editItemNameHandler(event) {
+    editItemName(event.target);
 }
 
 function changeQuantity(itemNameSpan, delta) {
@@ -123,12 +139,14 @@ function toggleBought(itemDiv) {
 
     itemNameSpan.classList.toggle('crossed-out');
     if (itemNameSpan.classList.contains('crossed-out')) {
+        itemNameSpan.removeEventListener('click', editItemNameHandler);
         boughtButton.textContent = 'Не куплено';
         boughtButton.className = 'status-button not-bought';
         deleteButton.style.display = 'none';
         minusButton.style.visibility = 'hidden';
         plusButton.style.visibility = 'hidden';
     } else {
+        itemNameSpan.addEventListener('click', editItemNameHandler);
         boughtButton.textContent = 'Куплено';
         boughtButton.className = 'status-button bought';
         deleteButton.style.display = 'inline-block';

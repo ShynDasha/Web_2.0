@@ -16,9 +16,8 @@ body {
     width: 100%;
     max-width: 1200px;
 }
-/*  для списку покупок і статистики */
+/* для списку покупок і статистики */
 .shop-list, .summary {
-    flex: 1;
     margin: 10px;
     padding: 20px;
     border-radius: 4px;
@@ -30,12 +29,12 @@ body {
     flex: 1;
     position: relative;
 }
-.summary{
-    display: flex ;
-    flex-wrap: wrap;
-    gap: 1;
+.summary {
+    display: flex;
+    flex-direction: column; /* Зміна на колонковий макет для вертикального розширення */
+    height: auto;
 }
-/*  форми додавання нового товару */
+/* форми додавання нового товару */
 .add-item {
     display: flex;
     align-items: center;
@@ -60,7 +59,7 @@ body {
     transition: none;
     border-bottom: 4px solid #0566ce;
 }
-/*  для елементів списку товарів */
+/* для елементів списку товарів */
 .item {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -84,8 +83,7 @@ body {
     text-decoration: line-through;
     color: #888;
 }
-
-/*  для кнопок статусу товару, кількості та видалення */
+/* для кнопок статусу товару, кількості та видалення */
 .status-button, .quantity-button {
     background-color: #007bff;
     border-radius: 7px;
@@ -93,7 +91,7 @@ body {
     cursor: pointer;
     position: relative;
 }
- .remove-button {
+.remove-button {
     background-color: #dc3545;
     color: white;
     border-radius: 7px;
@@ -120,7 +118,6 @@ body {
     box-shadow: none;
     transition: none;
     border-bottom: 4px solid #9a9a9a;
-    
 }
 /* для кнопки статусу товару "куплено" */
 .status-button.bought {
@@ -137,31 +134,17 @@ body {
 .add-button:active {
     transform: translateY(2px);
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0); 
-} 
-.tomat{
-    margin-right: 30px;
-}
-.cookies{
-    margin-left: 25px;
-}
-.cheese{
-    margin-left: 50px;
 }
 .status-button-section {
     display: flex;
     align-items: center;
 }
-/*  для кнопок зміни кількості товару */
-/* Add this to your CSS */
-
-/* Update quantity section to use flexbox for centering */
+/* для кнопок зміни кількості товару */
 .quantity-section {
     display: flex;
     align-items: center;
-    justify-content: center; /* Center contents horizontally */
+    justify-content: center; /* Центрування по горизонталі */
 }
-
-/* Update quantity button styles for hiding */
 .quantity-button {
     background-color: transparent;
     color: #212529;
@@ -169,27 +152,23 @@ body {
     padding: 10px 15px;
     margin: 0 5px;
     border-radius: 50%;
-    flex-shrink: 0; /* Prevent buttons from shrinking */
+    flex-shrink: 0; /* Зупиняємо кнопку від стиснення */
 }
-
 .quantity-button.minus {
     background-color: #dc3545;
     color: white;
     border-bottom: 4px solid #b52d3a;
 }
-
 .quantity-button.plus {
     background-color: #28a745;
     color: white;
     border-bottom: 4px solid #1f7434;
 }
-
 .quantity-button:active {
     transform: translateY(3px);
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0); 
 }
-
-/* Center the counter span */
+/* Центруємо лічильник */
 .counter {
     border-radius: 15%; 
     width: 1.5em; 
@@ -200,11 +179,10 @@ body {
     justify-content: center; 
     align-items: center; 
     color: rgb(71, 71, 71); 
-    margin: 0 10px; /* Add some margin for spacing */
-    flex-grow: 1; /* Allow counter to grow and take available space */
+    margin: 0 10px; /* Додаємо відступ для простору */
+    flex-grow: 1; 
     text-align: center;
 }
-
 .quantity-button[data-tooltip]:hover::after, .add-button[data-tooltip]:hover::after, .status-button[data-tooltip]:hover::after, .remove-button[data-tooltip]:hover::after {
     content: attr(data-tooltip);
     position: absolute;
@@ -227,10 +205,7 @@ body {
         flex-direction: column;
     }
 }
-.title {
-    font-size: 16px;
-    padding-bottom: 1em;
-}
+
 .title {
     font-size: 16px;
     display: flex;
@@ -238,44 +213,33 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding-bottom: 1em;
     padding-top: 5px;
     font-size: 20px;
- 
 }
-.boughtItems {
-    border-bottom: 1px solid #ccc;
-    width: 100%;
+
+#remaining-items, #bought-items {
     display: grid;
-    grid-template-columns: 8em 1em; 
- 
+    grid-template-columns: repeat(4, 1fr); /* Додаємо сітку з 4 колонками */
+    gap: 10px; /* Додаємо відступи між елементами */
+    height: auto; /* Додаємо автоматичну висоту */ 
 }
-.boughtTitle{
- padding-top: 20px;
-}
-.bough{
+.bough {
     width: 10em;
     height: 3em;
     border-radius: 0.5em;
     background-color: #e1e1e1;
     border: none;
     color: rgb(71, 71, 71); 
-   
 }
 .product {
     border-top: 1px solid #ccc;
     padding-top: 0.5em;
     border-width: 100%;
-   
     height: 3em;
     max-width: 40rem;
-    flex:1;
-}
-.summary{
-    width: 300px;
-    height: 230px;
-    padding: 1em;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    flex: 0;
+    margin-bottom: 10px;
 }
 .circle {
     border-radius: 50%; 
@@ -296,10 +260,10 @@ body {
     bottom: -25px;
     background-color: #800080;
     color: white;
-     padding: 5px 20px;
-     border-radius: 10px 10px 0 0;
-     cursor: pointer;
-     transition: transform 0.5s ease;
+    padding: 5px 20px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    transition: transform 0.5s ease;
  }
 
  #main-badge:hover {
