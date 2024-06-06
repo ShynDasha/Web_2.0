@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Додавання початкових товарів
     const initialItems = [
         { name: 'Помідори', quantity: 2, bought: false },
         { name: 'Печиво', quantity: 2, bought: false },
@@ -87,11 +86,19 @@ function editItemName(itemNameSpan) {
     const input = document.createElement("input");
     input.type = "text";
     input.value = originalName;
-    input.onblur = () => {
+
+    input.addEventListener("blur", () => {
         itemNameSpan.textContent = input.value.trim() || originalName;
         itemNameSpan.parentNode.replaceChild(itemNameSpan, input);
         updateStatistics();
-    };
+    });
+
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            input.blur();
+        }
+    });
+
     itemNameSpan.parentNode.replaceChild(input, itemNameSpan);
     input.focus();
 }
@@ -130,7 +137,6 @@ function toggleBought(itemDiv) {
     }
     updateStatistics();
 }
-
 
 function removeItem(itemDiv) {
     itemDiv.remove();

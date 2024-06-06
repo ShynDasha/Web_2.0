@@ -14,7 +14,7 @@ body {
     justify-content: space-between;
     margin: 20px;
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
 }
 /*  для списку покупок і статистики */
 .shop-list, .summary {
@@ -29,7 +29,11 @@ body {
 .shop-list {
     flex: 1;
     position: relative;
-
+}
+.summary{
+    display: flex ;
+    flex-wrap: wrap;
+    gap: 1;
 }
 /*  форми додавання нового товару */
 .add-item {
@@ -201,10 +205,6 @@ body {
     text-align: center;
 }
 
-.summary {
-    display: flex;
-    flex-direction: column;
-}
 .quantity-button[data-tooltip]:hover::after, .add-button[data-tooltip]:hover::after, .status-button[data-tooltip]:hover::after, .remove-button[data-tooltip]:hover::after {
     content: attr(data-tooltip);
     position: absolute;
