@@ -14,10 +14,14 @@ function addItem() {
     const itemName = newItemInput.value.trim();
 
     if (itemName) {
-        addItemToDOM(itemName, 1, false);
-        newItemInput.value = "";
-        newItemInput.focus();
-        updateStatistics();
+        if (isNameUnique(itemName)) {
+            addItemToDOM(itemName, 1, false);
+            newItemInput.value = "";
+            newItemInput.focus();
+            updateStatistics();
+        } else {
+            alert('Назва товару повинна бути унікальною.');
+        }
     }
 }
 
@@ -40,6 +44,7 @@ function addItemToDOM(name, quantity, bought) {
     const minusButton = document.createElement("button");
     minusButton.className = `quantity-button minus ${quantity <= 1 ? 'disabled' : ''}`;
     minusButton.textContent = "-";
+    minusButton.setAttribute('data-tooltip', 'Зменшити кількість');
     minusButton.onclick = () => changeQuantity(itemNameSpan, -1);
 
     const counterSpan = document.createElement("span");
@@ -49,6 +54,7 @@ function addItemToDOM(name, quantity, bought) {
     const plusButton = document.createElement("button");
     plusButton.className = "quantity-button plus";
     plusButton.textContent = "+";
+    plusButton.setAttribute('data-tooltip', 'Збільшити кількість');
     plusButton.onclick = () => changeQuantity(itemNameSpan, 1);
 
     quantitySection.appendChild(minusButton);
@@ -61,6 +67,7 @@ function addItemToDOM(name, quantity, bought) {
     const statusButton = document.createElement("button");
     statusButton.className = `status-button ${bought ? 'not-bought' : 'bought'}`;
     statusButton.textContent = bought ? "Не куплено" : "Куплено";
+    statusButton.setAttribute('data-tooltip', bought ? 'Позначити як не куплено' : 'Позначити як куплено');
     statusButton.onclick = () => toggleBought(itemDiv);
 
     statusButtonSection.appendChild(statusButton);
@@ -68,6 +75,7 @@ function addItemToDOM(name, quantity, bought) {
     const removeButton = document.createElement("button");
     removeButton.className = "remove-button";
     removeButton.textContent = "✖";
+    removeButton.setAttribute('data-tooltip', 'Видалити товар');
     removeButton.onclick = () => removeItem(itemDiv);
     if (bought) {
         removeButton.style.display = 'none';
@@ -96,6 +104,12 @@ function editItemName(itemNameSpan) {
         const newName = input.value.trim();
         if (newName === '') {
             alert('Назва не може бути порожньою');
+            input.focus();
+            return;
+        }
+        if (!isNameUnique(newName)) {
+            alert('Назва товару повинна бути унікальною.');
+            input.value = ''; 
             input.focus();
             return;
         }
@@ -142,6 +156,7 @@ function toggleBought(itemDiv) {
         itemNameSpan.removeEventListener('click', editItemNameHandler);
         boughtButton.textContent = 'Не куплено';
         boughtButton.className = 'status-button not-bought';
+        boughtButton.setAttribute('data-tooltip', 'Позначити як куплено');
         deleteButton.style.display = 'none';
         minusButton.style.visibility = 'hidden';
         plusButton.style.visibility = 'hidden';
@@ -149,6 +164,7 @@ function toggleBought(itemDiv) {
         itemNameSpan.addEventListener('click', editItemNameHandler);
         boughtButton.textContent = 'Куплено';
         boughtButton.className = 'status-button bought';
+        boughtButton.setAttribute('data-tooltip', 'Позначити як не куплено');
         deleteButton.style.display = 'inline-block';
         minusButton.style.visibility = 'visible';
         plusButton.style.visibility = 'visible';
@@ -176,11 +192,20 @@ function updateStatistics() {
         const productButton = document.createElement("button");
         productButton.className = "bough";
         productButton.innerHTML = `<strong>${name}</strong><span class="circle">${quantity}</span>`;
-
         if (isBought) {
             boughtItems.appendChild(productButton);
         } else {
             remainingItems.appendChild(productButton);
         }
     });
+}
+
+function isNameUnique(name) {
+    const items = document.querySelectorAll(".item-name");
+    for (const item of items) {
+        if (item.textContent.trim().toLowerCase() === name.trim().toLowerCase()) {
+            return false;
+        }
+    }
+    return true;
 }
