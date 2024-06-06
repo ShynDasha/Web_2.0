@@ -113,11 +113,12 @@ body {
     color: rgb(71, 71, 71);
     width: 10em;
     height: 3em;
-    margin-right: -8px;  
     border: none;
     box-shadow: none;
     transition: none;
     border-bottom: 4px solid #9a9a9a;
+    margin-left: auto; /* Розміщення кнопки зліва */
+    margin-right: -8px;
 }
 /* для кнопки статусу товару "куплено" */
 .status-button.bought {

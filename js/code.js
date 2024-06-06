@@ -93,9 +93,10 @@ function addItemToDOM(name, quantity, bought) {
 }
 
 function editItemName(itemNameSpan) {
+    const originalName = itemNameSpan.textContent;
     const input = document.createElement('input');
     input.type = 'text';
-    input.value = itemNameSpan.textContent;
+    input.value = originalName;
     input.className = 'edit-item-name-input';
     itemNameSpan.replaceWith(input);
     input.focus();
@@ -104,6 +105,7 @@ function editItemName(itemNameSpan) {
         const newName = input.value.trim();
         if (newName === '') {
             alert('Назва не може бути порожньою');
+            input.value = originalName;
             input.focus();
             return;
         }
