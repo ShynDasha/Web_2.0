@@ -7,13 +7,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 .contain {
     display: flex;
     justify-content: space-between;
     margin: 20px;
-    width: 100%;
     max-width: 1200px;
 }
 /* для списку покупок і статистики */
