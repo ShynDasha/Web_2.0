@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Шин Дарія">
+    <title>Кошик покупок</title>
+    <link rel="stylesheet" href="static/styles/style.css">
+</head>
+<body>
+    <div class="contain">
+        <div class="shop-list">
+            <div class="add-item">
+                <input type="text" placeholder="Назва товару" id="new-item">
+                <button class="add-button" data-tooltip="Додати новий товар" onclick="addItem()"><strong>Додати</strong></button>
+            </div>
+            <section class="items" id="item-list">
+                <!-- елементи списку товарів -->
+            </section>
+        </div>
+        <div class="summary">
+            <div class="title"><strong>Залишилося</strong></div>
+            <div class="product" id="remaining-items">
+                <!-- товари, які ще необхідно купити -->
+            </div>
+            <div class="title boughtTitle"><strong>Куплено</strong></div>
+            <div class="product" id="bought-items">
+                <!-- товари, які вже куплені -->
+            </div>
+        </div>
+    </div>
+    <div class="badg" id="main-badge" data-owner="Шин Дарія">
+        <span>
+            <h4 id="title">Buy List</h4>
+        </span>
+    </div>
+    <script src="js/code.js"></script>
+</body>
+</html>

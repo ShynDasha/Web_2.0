@@ -1,0 +1,299 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #e1e1e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contain {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    max-width: 1200px;
+}
+/* для списку покупок і статистики */
+.shop-list, .summary {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    min-width: 500px;
+}
+.shop-list {
+    flex: 1;
+    position: relative;
+}
+.summary {
+    display: flex;
+    flex-direction: column; /* Зміна на колонковий макет для вертикального розширення */
+    height: auto;
+}
+/* форми додавання нового товару */
+.add-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+#new-item {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px; /* заокруглення тільки зліва */
+    font-size: 17px;
+}
+.add-button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 0 7px 7px 0; /* заокруглення тільки справа */
+    padding: 12px 40px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+    transition: none;
+    border-bottom: 4px solid #0566ce;
+}
+/* для елементів списку товарів */
+.item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+.item-counter {
+    display: flex;
+    align-items: center;
+}
+.item-counter button {
+    margin: 0 5px;
+}
+.item:last-child {
+    border-bottom: none;
+}
+/* Стилі для тексту товару, який перечеркнутий */
+.item-name.crossed-out {
+    text-decoration: line-through;
+    color: #888;
+}
+/* для кнопок статусу товару, кількості та видалення */
+.status-button, .quantity-button {
+    background-color: #007bff;
+    border-radius: 7px;
+    padding: 5px 10px;
+    cursor: pointer;
+    position: relative;
+}
+.remove-button {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 7px;
+    padding: 5px 10px;
+    cursor: pointer;
+    position: relative;
+    width: 3.5em;
+    height: 3em;
+    margin-left: 5px;
+    margin-right: -10px;
+    border: none;
+    box-shadow: none;
+    transition: none;
+    border-bottom: 4px solid #b52d3a;
+}
+/* для кнопки статусу товару "Не куплено" */
+.status-button.not-bought {
+    background-color: #e1e1e1;
+    color: rgb(71, 71, 71);
+    width: 10em;
+    height: 3em;
+    border: none;
+    box-shadow: none;
+    transition: none;
+    border-bottom: 4px solid #9a9a9a;
+    margin-left: auto; /* Розміщення кнопки зліва */
+    margin-right: -8px;
+}
+/* для кнопки статусу товару "куплено" */
+.status-button.bought {
+    background-color: #e1e1e1;
+    color: rgb(71, 71, 71);
+    width: 10em;
+    height: 3em;
+    border: none;
+    box-shadow: none;
+    transition: none;
+    border-bottom: 4px solid #9a9a9a;
+}
+.remove-button:active, .status-button.bought:active,.status-button.not-bought:active,
+.add-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0); 
+}
+.status-button-section {
+    display: flex;
+    align-items: center;
+}
+/* для кнопок зміни кількості товару */
+.quantity-section {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центрування по горизонталі */
+}
+.quantity-button {
+    background-color: transparent;
+    color: #212529;
+    border: 1px solid transparent;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 50%;
+    flex-shrink: 0; /* Зупиняємо кнопку від стиснення */
+}
+.quantity-button.minus {
+    background-color: #dc3545;
+    color: white;
+    border-bottom: 4px solid #b52d3a;
+}
+.quantity-button.plus {
+    background-color: #28a745;
+    color: white;
+    border-bottom: 4px solid #1f7434;
+}
+.quantity-button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0); 
+}
+/* Центруємо лічильник */
+.counter {
+    border-radius: 15%; 
+    width: 1.5em; 
+    height: 1.5em; 
+    font-size: 18px;
+    background-color: #e1e1e1;
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: rgb(71, 71, 71); 
+    margin: 0 10px; /* Додаємо відступ для простору */
+    flex-grow: 1; 
+    text-align: center;
+}
+.quantity-button[data-tooltip]:hover::after, .add-button[data-tooltip]:hover::after, .status-button[data-tooltip]:hover::after, .remove-button[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    background-color: #800080;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    top: -45px;
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1;
+}
+.quantity-button[data-tooltip]::after, .add-button[data-tooltip]::after, .status-button[data-tooltip]::after, .remove-button[data-tooltip]::after {
+    transform: translateX(-50%) scale(0.5);
+    opacity: 0;
+}
+@media (max-width: 700px) {
+    .contain {
+        flex-direction: column;
+    }
+}
+
+.title {
+    font-size: 16px;
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 1em;
+    padding-top: 5px;
+    font-size: 20px;
+}
+
+#remaining-items, #bought-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Додаємо сітку з 4 колонками */
+    gap: 10px; /* Додаємо відступи між елементами */
+    height: auto; /* Додаємо автоматичну висоту */ 
+}
+.bough {
+    width: 10em;
+    height: 3em;
+    border-radius: 0.5em;
+    background-color: #e1e1e1;
+    border: none;
+    color: rgb(71, 71, 71); 
+}
+.product {
+    border-top: 1px solid #ccc;
+    padding-top: 0.5em;
+    border-width: 100%;
+    height: 3em;
+    max-width: 40rem;
+    flex: 0;
+    margin-bottom: 10px;
+}
+.circle {
+    border-radius: 50%; 
+    width: 1.5em; 
+    height: 1.5em; 
+    background-color: orange;
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: white; 
+}
+.tomatoes{
+    text-decoration: line-through;
+}
+#main-badge {
+    position: fixed;
+    left: 25px;
+    bottom: -25px;
+    background-color: #800080;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+ }
+
+ #main-badge:hover {
+    transform: translateY(-25px);
+    background-color: #4b0082;
+}
+#main-badge:hover::after {
+    content: attr(data-owner);
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+@media print {
+    .contain {
+        position: relative;
+    }
+    #main-badge {
+        position: absolute;
+        background-color: white;
+        color: #800080;
+        border: 2px solid #800080;
+    }
+    #main-badge::before {
+        content: attr(data-owner);
+        color: #800080;
+    }
+    #main-badge::after {
+        content: "";
+    }
+    #title {
+        display: none; 
+    }
+}
